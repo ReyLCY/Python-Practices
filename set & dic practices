@@ -1,0 +1,107 @@
+#1.假設有個list存放一群人的生日月份，檢查list中是否有重複的月份
+
+bdays= [7,8,9,10,10]
+if len(bdays)== len(set(bdays)):
+    print("false!月份不重複")
+else:
+    print("true!月份重複")
+
+
+#2.創建一個空的 set，命名為 my_set。
+
+# 將以下數字添加到 my_set 中：1, 2, 3, 4, 5。
+# 創建另一個 set，名為 my_set2，包含數字 3, 4, 5, 6, 7。
+# 找到並顯示這兩個集合的交集。
+# 找到並顯示這兩個集合的聯集。
+# 找到並顯示這兩個集合的差異。
+# 從 my_set 中刪除數字 3。
+# 檢查數字 2 是否在 my_set 中，如果是，則顯示 True，否則顯示 False。
+# 創建一個新的 set，名為 my_set3，包含所有介於 1 到 10 之間的偶數。
+my_set =set()
+my_set.update([1,2,3,4,5])
+
+my_set2={3,4,5,6,7}
+
+print(my_set & my_set2)
+print(my_set|my_set2)
+print(my_set-my_set2)
+my_set.remove(3)
+print(my_set)
+
+for a in my_set:
+    if a==2:
+        print("TRUE")
+    else:
+        print("false")
+print("\n")
+print( 2 in my_set)
+
+
+my_set3={i for i in range(1,10) if i %2 ==0}
+print(my_set3)
+my_set3 =set()
+for i in range(1,10):
+    if i %2 ==0:
+        my_set3.add(i)
+
+my_set3=set(range(2,10,2))
+print("\n")
+    
+#3.創建一個空字典，名為 my_dict。
+
+# 將以下鍵值對添加到 my_dict 中："name": "John", "age": 25, "city": "New York"。
+# 獲取並顯示 my_dict 中 "name" 的值。
+# 更改 my_dict 中 "age" 的值為 26。
+# 創建另一個字典，名為 my_dict2，包含鍵值對："gender": "Male", "occupation": "Engineer"。
+# 合併 my_dict 和 my_dict2，並將結果存儲在新的字典中，名為 merged_dict。
+# 檢查 my_dict 中是否存在 "city" 這個鍵，如果是，則顯示 True，否則顯示 False。
+# 刪除 my_dict 中的 "age" 鍵值對。
+# 迭代顯示 my_dict 中的所有鍵。
+# 創建一個新字典，名為 ages，包含以下鍵值對："John": 25, "Jane": 30, "Jim": 22。
+# 將 ages 中的鍵值對添加到 my_dict 中。
+# 計算並顯示 ages 中年齡的平均值。
+# my_dict ={"name":"John", "age": 25, "city": "New York"}
+# print(my_dict["name"])
+my_dict = dict()
+my_dict["name"] ="John"
+my_dict["age"] =25
+my_dict["city"] ="New York"
+
+my_dict["age"]=26
+print(my_dict["name"])
+
+print("\n")
+merged_dict =dict()
+for k,v in my_dict.items():
+    merged_dict [k]=v
+
+print(merged_dict)
+
+my_dict2 ={"gender": "Male", "occupation": "Engineer"}
+my_dict3 =my_dict
+my_dict3.update(my_dict2)
+
+print(my_dict3)
+print("city" in  my_dict )
+del my_dict["age"]
+
+
+for i in my_dict:
+    print(i)
+
+ages ={"John": 25, "Jane": 30, "Jim": 22}
+my_dict.update(ages)
+print(my_dict)
+
+ages = list(ages.values()) 
+print(sum(ages)/len(ages))
+
+
+#創建一個字典，0 <= n < 4，在字典中加入 n: n^2 的key: value資料
+#output: {0: 0, 1: 1, 2: 4, 3: 9, 3: 9}
+
+num =int(input("請輸入字典內的資料數量") )
+output={}
+for i in range(num):
+    output[i]= i**2
+print(output)
