@@ -1,0 +1,137 @@
+#1.將字串"Python 3.12"轉換成tuple
+c=input("請輸入任一字串: ")
+a=(c,)
+print(type(a))
+print(tuple(c))
+v= ("safd123")
+print(tuple(v)) 
+
+
+#2.[1, 'abcd', 3, 1.2, 4, 'xyz', 5, 'pqr', 7, -5, -12.22] 計算屬於int 的個數
+b=[1, 'abcd', 3, 1.2, 4, 'xyz', 5, 'pqr', 7, -5, -12.22]
+
+count=0
+
+for i in b:
+    if type(i)==int:
+        count +=1
+print(f"資料庫中整數個數為{count}")
+
+#3.檢查一個list是否為空list
+nm=input("請輸入數列: ")
+n=[nm]
+if len(n)==0:
+    print("數列有空格")
+else:
+    print("數列無控格")
+
+
+
+#4.假設背包中有['iPhone', 'Mac', 'iPad', 'iPhone'],使用for loop按順序印出字串
+f=['iPhone', 'Mac', 'iPad', 'iPhone']
+# g=["item0= ","item1= ","item2= ","item3= "]
+# for g,f in zip(g,f):
+#     print(g,f)
+
+for index,value in enumerate(f):
+    print(f"item{index}= {value}")
+
+
+#5.假設有個list names = ["faker", "messi", "shohei"], 將其中一個元素取出,改成全
+#部大寫,再將這個list印出,取出的那個元素有被改變嗎?
+li=["faker", "messi", "shohei"]
+li2=li[0].upper()
+print(li2)
+print(li)
+
+#6.計算某個介於1~100整數組成的list中, 最大值與最小值是多少
+
+ab = [12, 54, 77, 44, 33]
+
+ma = 0
+mi = 101
+
+for value in ab:
+    if value > ma:
+        ma = value # 更新最大值
+    if value < mi:
+        mi = value # 更新最小值
+
+print(ma, mi, max(ab), min(ab))
+
+
+#8.生成一個list,裡面包含3~100(不包含)中,3的倍數
+nums = [num for num in range(3,100) if num %3 ==0]
+nums =[num for num in range(3,100,3)]
+print(nums)
+
+#9.生成一個tuple,包含"faker", [2013, 2015, 2016, 2023], 0.73 這三個元素,再用
+#name, champions, winrate 這三個變數將對應的內容讀出
+tu =("faker",[2013,2015,2016,2023],0.73)
+ui =("name= ", "champions= ","winrate= ")
+name , champions, winrate, =tu
+for ui,tu in zip(ui,tu):
+    print(ui,tu)
+
+
+#10.將此tuple : (100, 200, 300) 中的元素按照順序印出
+xi =(100,200,300)
+for u in xi :
+    print(u)
+
+for i in (100,200,300):
+    print(i)
+
+#11.將一個雙層tuple中的string轉成int
+yu =(("333","33"),("1416","55"))
+ot =[]
+for v in yu:
+    a,b =v
+    ot.append((int(a),int(b)))
+print(tuple(ot))
+
+print(tuple([(int(v[0]),int(v[1]))for v in yu]))
+
+
+#12.將包含有正整數的tuple轉成int
+
+rt = (1,2,3,4)
+rtn =0
+for i in range(len(rt)):
+    rtn+=rt[i]*10**(3-i)
+print(rtn)
+
+
+b=(1,2,3,4)
+b=[str(i)for i in list(b)]
+print(int("".join(b)))
+
+
+#13.計算list: [12, 54, 77, 44, 33]中的所有元素總和與平均值
+le =[12,54,77,44,33]
+sum =0
+count =0
+for i in le:
+    sum += i
+    count+=1
+print(f"此列表中所有數字加總為: {sum},平均值為: {sum/count}")
+
+#撰寫程式檢查是否為英文迴文 (不管大小寫，假設只有空格, 句點, 逗號在句中)
+#Now I see bees, I won : True
+#Race car: True
+#I love Python: False
+
+sentence="Now I see bees, I won"
+sentenc1="Race car"
+sentence2="I love Python"
+clean =sentence.lower().replace(" ","").replace(",","").replace(".","")
+if clean ==clean[::-1]:
+    print("此為英文迴文")
+else:
+    print("此並非文英文迴文")
+
+clean =sentence2.lower().replace(" ","").replace(",","").replace(".","")
+if clean ==clean[::-1]:
+    print("此為英文迴文")
+else:
+    print("此並非文英文迴文")
