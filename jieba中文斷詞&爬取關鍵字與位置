@@ -1,0 +1,50 @@
+import jieba
+
+sentence = "效力火腿隊期間，大谷擔任投手，外野手及指定打擊"
+strs =["效力火腿隊期間","大谷擔任投手","外野手及指定打擊"]
+for string in strs:
+    seg_list =jieba.cut(string) #切割完的list
+    print("Basic cut Mode: "+"/".join(list(seg_list))) # 使用 / 連接詞
+
+#全模式
+seg_list1 = jieba.cut("外野手及指定打擊", cut_all =True)
+print("full mode: "+"/".join(seg_list1))
+
+#精確模式
+seg_list2 = jieba.cut("外野手及指定打擊", cut_all =False)
+print("full mode: "+"/".join(seg_list2))
+
+# 預設是精確模式
+seg_list3 = jieba.cut("效力火腿隊期間，大谷擔任投手，外野手及指定打擊")  
+print("/".join(seg_list3))
+
+# 搜索引擎模式
+seg_list4 = jieba.cut_for_search("效力火腿隊期間，大谷擔任投手，外野手及指定打擊")  
+print(" ".join(seg_list4))
+
+#新增字典(txt檔)，讓jieba可以學習這一單詞
+#載入客製化字典
+jieba.load_userdict("dict.txt")
+seg_list5 = jieba.cut("效力火腿隊期間，大谷擔任投手，外野手及指定打擊")
+print("/".join(seg_list5))
+
+#使用TF-IDF算法的提取關鍵字
+import jieba.analyse
+sentence=[]
+with open("Missile.txt","r",encoding="utf-8")as file:
+    #逐行讀取文件內容
+    lines =file.readlines()
+    for line in lines:
+        sentence.append(line.strip()) #使用strip()去除每行末尾的換行符號
+
+keyword =jieba.analyse.extract_tags(" ".join(sentence), topK =3)
+print(keyword)
+
+#.extract_tags和.tokenize後面都需要接字串，前面已將文章分段用sentence包住
+#.join是將文本透過空白鍵串接成字串
+
+#提取關鍵字位置
+result = jieba.tokenize(" ".join(sentence))
+for tk in result:
+    if tk[0] in keyword:
+        print(f"word {tk[0]} \t\t start: {tk[1]} \t\t end:{tk[2]}")
