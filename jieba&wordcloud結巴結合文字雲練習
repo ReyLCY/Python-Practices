@@ -1,0 +1,31 @@
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud, ImageColorGenerator
+#WordCloud是模組中的類別，需要用大寫表示
+from PIL import Image
+import jieba
+import numpy as np 
+
+text= open("bitcoin.txt", "r", encoding="utf-8").read() 
+
+wordlist = jieba.cut(text)
+words ="/".join(wordlist)
+# print(words)
+
+mask = np.array(Image.open("money.jpg"))
+font="SourceHanSansTW-Regular.otf"
+
+bitcoinwordcloud =WordCloud(
+    mask=mask,
+    background_color="lightyellow",
+    max_words=60,
+    width=100,
+    height=100,
+    contour_color="blue",
+    font_path=font
+
+).generate(words)
+
+plt.figure(figsize=(15,15)) #顯示視窗的大小
+plt.imshow(bitcoinwordcloud)
+plt.axis("off") #關閉坐標軸。因為文字雲通常只是用來視覺化文字分佈，而不需要坐標軸。
+plt.show()
